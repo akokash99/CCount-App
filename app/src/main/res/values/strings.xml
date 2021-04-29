@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ccount</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_txt">Welcome to Ccount. The app that will allow you to regain control over your eating habits!</string>
+    <string name="diary_btn">My day in calories</string>
+</resources>
