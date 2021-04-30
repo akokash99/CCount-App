@@ -18,7 +18,7 @@ class FoodRepository private constructor(context: Context) {
     private val foodDao = database.foodDao()
     private val executor = Executors.newSingleThreadExecutor()
 
-    fun getAllFriends(): LiveData<List<Food>> = foodDao.getAllFood()
+    fun getAllFoods(): LiveData<List<Food>> = foodDao.getAllFood()
 
     fun insert(food: Food) {
         executor.execute {

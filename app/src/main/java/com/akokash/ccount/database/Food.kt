@@ -14,11 +14,14 @@ data class Food(
 
 
     @ColumnInfo(name = "food_name")
-    var fanme: String = "",
+    var fname: String = "",
 
 
     @ColumnInfo(name = "food_calories")
-    var lname: String = "",
+    var fcalories: Int = 0,
+
+    @ColumnInfo(name = "food_comment")
+    var comment: String = "",
 
     @ColumnInfo(name = "food_fat")
     var food_fat: Int = 0,

@@ -1,60 +1,167 @@
 package com.akokash.ccount.ui
 
+import android.Manifest
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.text.InputType
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.akokash.ccount.R
+import com.akokash.ccount.database.Food
+import com.akokash.ccount.databinding.FragmentDataEntryBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import java.io.File
+class DataEntryFragment : BottomSheetDialogFragment(), AdapterView.OnItemSelectedListener {
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+    private val sharedViewModel: AppViewModel by activityViewModels()
+    private var binding: FragmentDataEntryBinding? = null
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DataEntryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class DataEntryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+
+
+    override fun onStart() {
+        super.onStart()
+
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_data_entry, container, false)
+
+        val addFragmentBinding = FragmentDataEntryBinding.inflate(inflater, container, false)
+        binding = addFragmentBinding
+        binding?.apply {
+
+
+
+            addButton.setOnClickListener {
+
+
+                 val newFood = Food()
+                newFood.food_fat = fatInput.text.toString().toInt()
+                newFood.food_protein = proteinInput.text.toString().toInt()
+                newFood.food_carbs = carbsInput.text.toString().toInt()
+
+                newFood. fname = foodInput.text.toString()
+                newFood.fcalories = caloriesInput.text.toString().toInt()
+                newFood. comment = commentInput.text.toString()
+
+
+
+
+                itemAddedAlert(newFood)
+                /*val msg_alert = resources.getString(R.string.food_added_notif, newFood.fname)
+                val builder = AlertDialog.Builder(context)
+                with(builder) {
+                    setTitle(R.string.alert_title)
+                    setMessage(msg_alert)
+                    setPositiveButton(R.string.confirm){_,_ ->
+                        sharedViewModel.insert(newFood)
+
+                    }
+                    setNegativeButton(R.string.no){_,_->
+
+                    }
+                    show()
+                }*/
+
+
+            }
+            cancelButton.setOnClickListener {
+                dismiss()
+            }
+        }
+        return addFragmentBinding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DataEntryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DataEntryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
+
+    fun itemAddedAlert(food: Food) {
+        val msg_alert = resources.getString(R.string.food_added_notif, food.fname)
+        val builder = AlertDialog.Builder(context)
+        with(builder) {
+            setTitle(R.string.alert_title)
+            setMessage(msg_alert)
+            setPositiveButton(R.string.confirm){_,_ ->
+                sharedViewModel.insert(food)
+                findNavController().navigate(R.id.action_dataEntryFragment_to_diaryFragment)
+
+            }
+            setNegativeButton(R.string.no){_,_->
+
+            }
+            show()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        binding = null
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        binding?.apply {
+
+            /*when (parent) {
+                typeSpinner -> {
+                    newItem.type = position
+                    typeImageView.setImageResource(when(newItem.type) {
+                        0 -> R.drawable.type_book
+                        1 -> R.drawable.type_movie
+                        else -> R.drawable.type_song
+                    })
+                }
+                publishedSpinner -> newItem.published = position
+                ratingSpinner -> newItem.rating = position
+            }*/
+        }
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) { }
+
+
+
+
+
+
+    companion object {
+        private const val REQUEST_PHOTO = 0
+        private const val CAMERA_REQUEST_CODE = 1000
+        const val YEAR_ZERO = 1984
+        val YEARS = (YEAR_ZERO..2021).toList().toTypedArray()
+    }
+}
+
+fun Context.hideKeyboard(view: View) {
+    val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(view.windowToken, 0)
 }

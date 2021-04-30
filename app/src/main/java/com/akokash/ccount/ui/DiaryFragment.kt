@@ -1,11 +1,18 @@
 package com.akokash.ccount.ui
 
 import android.os.Bundle
+import android.view.*
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.akokash.ccount.R
+import com.akokash.ccount.database.Food
+import com.akokash.ccount.databinding.FragmentDiaryBinding
+import com.akokash.ccount.databinding.FragmentMainBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,43 +25,120 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class DiaryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val vm: AppViewModel by activityViewModels()
+    private var binding: FragmentDiaryBinding? = null
+    private val foodAdapter = FoodAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_diary, container, false)
+    ): View {
+        setHasOptionsMenu(true)
+
+        val bindingDiary = FragmentDiaryBinding.inflate(inflater, container, false)
+        binding = bindingDiary
+        binding?.apply {
+            foodRecyclerview.run {
+                layoutManager = LinearLayoutManager(context)
+                adapter = foodAdapter
+            }
+
+            addBtn.setOnClickListener {
+                findNavController().navigate(R.id.action_diaryFragment_to_dataEntryFragment)
+            }
+            rmvBtn.setOnClickListener{
+                if(vm.toDelete!=-1){
+                    val thisFood = foodAdapter.getFoodAtPosition(vm.toDelete)
+                    vm.deleteFood(food = thisFood)
+                    vm.toDelete=-1
+
+                }
+
+            }
+            budgetTxtView.setText("Your Budget is: " + vm.calories_budget.toString())
+
+
+        }
+        return bindingDiary.root
+    }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        vm.food.observe(viewLifecycleOwner, {
+            foodAdapter.updateFood(it)
+
+        })
+
+    }
+    companion object {
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DiaryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DiaryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+    }
+
+
+    private inner class FoodViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+        private lateinit var food: Food
+        private val foodName: TextView = itemView.findViewById(R.id.fname_view)
+        private val foodCalories: TextView = itemView.findViewById(R.id.cal_view)
+        private val foodProtein: TextView = itemView.findViewById(R.id.protein_txt)
+        private val foodCarbs: TextView = itemView.findViewById(R.id.carbs_txt)
+        private val foodFat: TextView = itemView.findViewById(R.id.fat_txt)
+
+
+
+
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+
+        override fun onClick(v: View?) {
+
+            Toast.makeText(activity, foodName.text.toString()+ " will be deleted", Toast.LENGTH_SHORT).show()
+            vm.toDelete=adapterPosition
+        }
+
+        fun bind(food: Food) {
+            this.food = food
+            foodName.text =  food.fname
+            foodCalories.text =  food.fcalories.toString()+ " Calories"
+            foodProtein.text=  "protein: "+food.food_protein.toString()+"g"
+            foodCarbs.text=  "carbs: "+food.food_carbs.toString()+"g"
+            foodFat.text=  "fat: "+food.food_fat.toString()+"g"
+
+
+
+        }
+    }
+    private inner class FoodAdapter : RecyclerView.Adapter<FoodViewHolder>() {
+        var foods: List<Food> = emptyList()
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
+            val view = layoutInflater.inflate(R.layout.recyclerview_item, parent, false)
+            return FoodViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: FoodViewHolder, position: Int) = holder.bind(foods[position])
+
+        override fun getItemCount() = foods.size
+
+        fun updateFood(newFoods: List<Food>) {
+            this.foods = newFoods
+            notifyDataSetChanged()
+        }
+
+        fun getFoodAtPosition(position: Int): Food {
+            return foods[position]
+        }
     }
 }

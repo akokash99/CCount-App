@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/settings_item"
+        android:title="@string/settings" />
+    <item
+        android:id="@+id/facts_item"
+        android:title="@string/Cool_facts" />
+    <item
+        android:id="@+id/info_item"
+        android:title="@string/info" />
+</menu>
