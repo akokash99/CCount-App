@@ -18,6 +18,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.activityViewModels
@@ -55,20 +56,37 @@ class DataEntryFragment : BottomSheetDialogFragment(), AdapterView.OnItemSelecte
 
             addButton.setOnClickListener {
 
+                if(fatInput.text.toString().equals("")){
+                    Toast.makeText(activity, "Missing the fats", Toast.LENGTH_SHORT).show()
+                }
+                else if (proteinInput.text.toString().equals("")){
+                    Toast.makeText(activity, "Missing the protein", Toast.LENGTH_SHORT).show()
+                }
+                else if(carbsInput.text.toString().equals("")){
+                    Toast.makeText(activity, "Missing the carbs", Toast.LENGTH_SHORT).show()
+                }
+                else if(foodInput.text.toString().equals("")){
+                    Toast.makeText(activity, "Missing the food", Toast.LENGTH_SHORT).show()
+                }
+                else if(caloriesInput.text.toString().equals("")){
+                    Toast.makeText(activity, "Missing the calories", Toast.LENGTH_SHORT).show()
+                }
+                else {
 
-                 val newFood = Food()
-                newFood.food_fat = fatInput.text.toString().toInt()
-                newFood.food_protein = proteinInput.text.toString().toInt()
-                newFood.food_carbs = carbsInput.text.toString().toInt()
+                    val newFood = Food()
+                    newFood.food_fat = fatInput.text.toString().toInt()
+                    newFood.food_protein = proteinInput.text.toString().toInt()
+                    newFood.food_carbs = carbsInput.text.toString().toInt()
 
-                newFood. fname = foodInput.text.toString()
-                newFood.fcalories = caloriesInput.text.toString().toInt()
-                newFood. comment = commentInput.text.toString()
-
-
+                    newFood.fname = foodInput.text.toString()
+                    newFood.fcalories = caloriesInput.text.toString().toInt()
+                    newFood.comment = commentInput.text.toString()
 
 
-                itemAddedAlert(newFood)
+
+
+                    itemAddedAlert(newFood)
+                }
                 /*val msg_alert = resources.getString(R.string.food_added_notif, newFood.fname)
                 val builder = AlertDialog.Builder(context)
                 with(builder) {

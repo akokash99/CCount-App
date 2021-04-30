@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp() = Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp()
 
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.main_menu, menu)
@@ -57,6 +58,12 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.facts_item ->{
                 navHostFragment.navController.navigate(R.id.action_mainFragment_to_factsFragment)
+                true
+            }
+            R.id.home ->{
+
+
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 true
             }
             else -> super.onOptionsItemSelected(item)

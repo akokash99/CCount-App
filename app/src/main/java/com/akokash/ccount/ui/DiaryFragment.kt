@@ -47,7 +47,9 @@ class DiaryFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
                 adapter = foodAdapter
             }
-
+            diaryDnBtn.setOnClickListener {
+                findNavController().navigate(R.id.action_diaryFragment_to_mainFragment)
+            }
             addBtn.setOnClickListener {
                 findNavController().navigate(R.id.action_diaryFragment_to_dataEntryFragment)
             }

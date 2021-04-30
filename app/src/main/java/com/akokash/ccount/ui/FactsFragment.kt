@@ -3,6 +3,7 @@ package com.akokash.ccount.ui
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.akokash.ccount.R
 import com.akokash.ccount.databinding.FragmentFactsBinding
 import com.akokash.ccount.databinding.FragmentInfoBinding
@@ -22,9 +23,9 @@ class FactsFragment : Fragment() {
         binding = fragmentFactsBinding
         binding?.apply {
 
-            /* settingsDnBtn.setOnClickListener {
-                 findNavController().navigate(R.id.action_settingsFragment_to_mainFragment)
-             }*/
+            factsDoneBtn.setOnClickListener {
+                 findNavController().navigate(R.id.action_factsFragment_to_mainFragment)
+             }
         }
         return fragmentFactsBinding.root
     }

@@ -23,9 +23,9 @@ class InfoFragment : Fragment() {
         binding = fragmentInfoBinding
         binding?.apply {
 
-           /* settingsDnBtn.setOnClickListener {
-                findNavController().navigate(R.id.action_settingsFragment_to_mainFragment)
-            }*/
+            infoDoneBtn.setOnClickListener {
+                findNavController().navigate(R.id.action_infoFragment_to_mainFragment)
+            }
         }
         return fragmentInfoBinding.root
     }
