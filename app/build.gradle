@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
 }
+int MILLIS_PER_MINUTE = 1000 * 60
+int minutesSinceEpoch = System.currentTimeMillis() / MILLIS_PER_MINUTE
 
 android {
     compileSdkVersion 30
@@ -26,6 +28,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BUILD_TIME", "\"${minutesSinceEpoch}\"")
+            resValue("string", "build_time", "\"${minutesSinceEpoch}\"")
+        }
+        debug {
+            buildConfigField("String", "BUILD_TIME", "\"${minutesSinceEpoch}\"")
+            resValue("string", "build_time", "\"${minutesSinceEpoch}\"")
         }
     }
     compileOptions {
@@ -53,4 +61,8 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+    implementation "androidx.preference:preference-ktx:1.1.1"
+
 }

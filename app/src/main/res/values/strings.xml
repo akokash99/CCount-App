@@ -22,5 +22,30 @@
     <string name="alert_title">ALERT</string>
     <string name="confirm">Yes</string>
     <string name="no">No</string>
+    <string name="ok">ok</string>
+    <string name ="welcome">welcome to ccount</string>
+    <string name="message_body"> Enjoy calorie counting!</string>
+
+    <string-array name="effects" >
+        <item>Crop Square</item>
+        <item>Crop Circle</item>
+        <item>Blur</item>
+        <item>Pixelation</item>
+        <item>Invert</item>
+        <item>Rounded Corners</item>
+    </string-array>
+
+    <string-array name="effect_values" >
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string name="show_message">Show Message at Start</string>
+    <string name="show_now_picture">Show Now Picture</string>
+    <string name="effect">Effect</string>
 
 </resources>

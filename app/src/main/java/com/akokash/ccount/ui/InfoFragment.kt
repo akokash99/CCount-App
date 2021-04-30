@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.akokash.ccount.BuildConfig
 import com.akokash.ccount.R
 import com.akokash.ccount.databinding.FragmentInfoBinding
 import com.akokash.ccount.databinding.FragmentSettingsBinding
@@ -29,7 +30,17 @@ class InfoFragment : Fragment() {
         }
         return fragmentInfoBinding.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.apply {
 
+            titleTextView.text = resources.getString(R.string.app_name) + " App"
+            versionTextView.text = "v."+BuildConfig.VERSION_NAME
+
+
+
+        }
+    }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()

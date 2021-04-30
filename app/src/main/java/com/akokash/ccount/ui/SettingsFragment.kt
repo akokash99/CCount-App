@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceFragmentCompat
 import com.akokash.ccount.R
 import com.akokash.ccount.databinding.FragmentSettingsBinding
 
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : PreferenceFragmentCompat() {
 
     private var binding: FragmentSettingsBinding? = null
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setHasOptionsMenu(true)
+        setPreferencesFromResource(R.xml.preference_fragment, rootKey)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
