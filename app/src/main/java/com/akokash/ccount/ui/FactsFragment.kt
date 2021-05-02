@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.akokash.ccount.R
 import com.akokash.ccount.databinding.FragmentFactsBinding
 import com.akokash.ccount.databinding.FragmentInfoBinding
+import com.akokash.ccount.model.FactsGenerator
 
 
 class FactsFragment : Fragment() {
@@ -16,7 +17,8 @@ class FactsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        var thiscontext = container?.getContext()
+        val model = FactsGenerator(thiscontext)
         setHasOptionsMenu(true)
 
         val fragmentFactsBinding = FragmentFactsBinding.inflate(inflater, container, false)
@@ -26,6 +28,11 @@ class FactsFragment : Fragment() {
             factsDoneBtn.setOnClickListener {
                  findNavController().navigate(R.id.action_factsFragment_to_mainFragment)
              }
+            textView3.setText(model.fact_generate())
+
+            factsGenBtn2.setOnClickListener{
+                textView3.setText(model.fact_generate())
+            }
         }
         return fragmentFactsBinding.root
     }

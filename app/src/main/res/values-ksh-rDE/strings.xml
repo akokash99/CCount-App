@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ccount</string>
+
+    <string name="welcome_txt">Willkommen bei Count. Die App, mit der Sie die Kontrolle über Ihre Essgewohnheiten wiedererlangen können!</string>
+    <string name="diary_btn">Mein Tag in Kalorien</string>
+    <string name="settings">die Einstellungen</string>
+    <string name="info">die Info</string>
+    <string name="Cool_facts">Fakten</string>
+    <string name="done">getan</string>
+    <string name="food_name">Was hast du gegessen?</string>
+    <string name="Calorie_Count">Kalorien</string>
+    <string name="Comments">Kommentar</string>
+    <string name="protein_count">Protein(g)</string>
+    <string name="carb_count">Kohlenhydrate(g)</string>
+    <string name="fat_count">Fett(g)</string>
+    <string name="add">Hinzufügen</string>
+    <string name="Cancel">stornieren</string>
+
+
+    <string name="food_added_notif">Sind Sie sicher, dass Sie %s zu Ihrem Ernährungstagebuch hinzufügen möchten?</string>
+    <string name="alert_title">AUFMERKSAM</string>
+    <string name="confirm">Ja</string>
+    <string name="no">Nein</string>
+    <string name="ok">Ok</string>
+    <string name ="welcome">Willkommen bei Ccount</string>
+    <string name="message_body">In Cc können Sie das Tagebuch verwenden, um alles zu protokollieren, was Sie gegessen haben. Sie können zu den Einstellungen gehen, um Ihr Tagesbudget festzulegen. Sie können auch interessante Fakten über Gewichtsverlust durch unsere App erfahren! Viel Spaß beim Kalorienzählen!</string>
+
+
+    <string name="show_instructions">Anweisungen beim Start anzeigen</string>
+    <string name="show_digital_scale">Digitale Waage anzeigen</string>
+    <string name="budget">Budget</string>
+
+
+
+    <string name="fact1">Im 19. Jahrhundert wurde eine Diät namens "Fletcherismus" populär. Die Diät wurde von dem Amerikaner Horace Fletcher („The Great Masticator“) eingeführt und förderte das Kauen eines Schluckes Essen mindestens 32 Mal oder bis es in Flüssigkeit umgewandelt wurde. Er argumentierte, seine Essmethode könne Menschen helfen, Krankheiten zu vermeiden und Gewicht zu verlieren.</string>
+    <string name="fact2">Elvis Presley war bekanntermaßen ein Fan der „Dornröschen-Diät“ oder einer Diät, bei der eine Person tagelang sediert ist. Der Grund für die Diät war, dass eine schlafende Person nichts essen würde.</string>
+    <string name="fact3">Abnehmen verändert die Gehirnaktivität. Zum Beispiel erzielten Frauen nach einem 6-monatigen Gewichtsverlustprogramm bei Gedächtnistests bessere Ergebnisse. Die Forschung hat auch Fettleibigkeit mit schlechtem Gedächtnis in Verbindung gebracht, insbesondere bei übergewichtigen birnenförmigen Frauen.</string>
+    <string name="fact4">Eine Fettzelle lebt etwa 7 Jahre. Wenn eine Fettzelle stirbt, wächst eine neue, um sie zu ersetzen. Der Körper verfolgt, wie viele Fettzellen er hat und wie viel Fett in jeder Zelle vorhanden ist. Wenn beispielsweise Fettzellen durch Fettabsaugung entfernt werden, gleicht der Körper dies durch das Wachstum neuer Fettzellen in anderen Bereichen des Körpers aus</string>
+    <string name="fact5">Fettleibigkeit wurde mit verschiedenen Arten von Krebs in Verbindung gebracht. Insbesondere Übergewicht verursacht Entzündungen, die zu Zellveränderungen im Körper führen. Allein durch das Abnehmen von 5% Ihres Körpergewichts können gefährliche Entzündungsniveaus erheblich gesenkt werden.</string>
+    <string name="fact6">Laut einer Studie der Universität von Minnesota entscheiden sich Menschen in unorganisierten Arbeitsbereichen eher für ungesunde Snacks.</string>
+    <string name="fact7">Nach einer bariatrischen Operation gaben ungefähr 87% der Patienten an, dass sich ihre Geschmacksknospen verändert haben. Fast die Hälfte von ihnen sagte, dass das Essen nicht so gut schmeckte, also aßen sie nicht so viel. Darüber hinaus bevorzugten die Menschen salzige Lebensmittel weniger.</string>
+    <string name="fact8">Eine kürzlich durchgeführte Studie ergab, dass der Verzehr von dunkler Schokolade in moderaten Mengen mit einem geringeren Bauchfettanteil verbunden ist. Wissenschaftler spekulieren, dass die Antioxidantien helfen können, Entzündungen zu bekämpfen und die Stoffwechselfunktion zu verbessern.</string>
+    <string name="fact9">Wissenschaftler glauben, dass es bis zu 100 verschiedene Arten von „Fettgenen“ oder Genen gibt, die die Wahrscheinlichkeit erhöhen, dass jemand Typ-2-Diabetes entwickelt und fettleibig wird. Wissenschaftler stellen jedoch fest, dass Gene, die Fettleibigkeit fördern, durch regelmäßige Bewegung und eine gesunde Ernährung ausgeglichen werden können.</string>
+    <string name="generate_fact">Neue Tatsache</string>
+    <string name="cool_facts_diet">Coole Fakten über Gewichtsverlust</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="go">go</string>
+    <string name="google">google</string>
+</resources>

@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         if (savedInstanceState == null) {
-            if (prefs.getBoolean(SHOW_MESSAGE_AT_START, false)) {
+            if (prefs.getBoolean(SHOW_INSTRUCTIONS_AT_START, false)) {
                 welcomeAlert()
             }
         }
@@ -96,8 +96,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val SHOW_MESSAGE_AT_START = "show_message_at_start"
-        const val SHOW_NOW_IMAGE = "show_now_image"
-        const val EFFECT_SELECTION = "effect_selection"
+        const val SHOW_INSTRUCTIONS_AT_START = "show_instructions_at_start"
+        const val SCALE_IMAGE = "scale_image"
+        const val BUDGET_SELECTION = "budget_selection"
     }
 }

@@ -1,5 +1,6 @@
 package com.akokash.ccount.ui
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
@@ -7,8 +8,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.akokash.ccount.MainActivity.Companion.BUDGET_SELECTION
+import com.akokash.ccount.MainActivity.Companion.SCALE_IMAGE
+
 import com.akokash.ccount.R
 import com.akokash.ccount.database.Food
 import com.akokash.ccount.databinding.FragmentDiaryBinding
@@ -24,11 +29,15 @@ private const val ARG_PARAM2 = "param2"
  * Use the [DiaryFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DiaryFragment : Fragment() {
+class DiaryFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeListener {
     private val vm: AppViewModel by activityViewModels()
     private var binding: FragmentDiaryBinding? = null
     private val foodAdapter = FoodAdapter()
 
+    private lateinit var calorie_budget: TextView
+    private val prefs: SharedPreferences by lazy {
+        PreferenceManager.getDefaultSharedPreferences(activity)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,7 +48,7 @@ class DiaryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         setHasOptionsMenu(true)
-
+        prefs.registerOnSharedPreferenceChangeListener(this)
         val bindingDiary = FragmentDiaryBinding.inflate(inflater, container, false)
         binding = bindingDiary
         binding?.apply {
@@ -49,6 +58,10 @@ class DiaryFragment : Fragment() {
             }
             diaryDnBtn.setOnClickListener {
                 findNavController().navigate(R.id.action_diaryFragment_to_mainFragment)
+            }
+
+            googleBtn.setOnClickListener{
+                findNavController().navigate(R.id.action_diaryFragment_to_webviewFragment)
             }
             addBtn.setOnClickListener {
                 findNavController().navigate(R.id.action_diaryFragment_to_dataEntryFragment)
@@ -81,6 +94,14 @@ class DiaryFragment : Fragment() {
 
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setSettings()
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        prefs.unregisterOnSharedPreferenceChangeListener(this)
+    }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
@@ -142,5 +163,56 @@ class DiaryFragment : Fragment() {
         fun getFoodAtPosition(position: Int): Food {
             return foods[position]
         }
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        when (key) {
+            BUDGET_SELECTION -> {
+                setSettings()
+            }
+        }
+    }
+
+    private fun setSettings() {
+        binding?.apply {
+            val effect = when (prefs.getString(BUDGET_SELECTION, "0")?.toInt()) {
+                0 -> budgetTxtView.setText("Your Budget is: 1500")
+
+                1 -> budgetTxtView.setText("Your Budget is: 1600")
+
+                2 -> budgetTxtView.setText("Your Budget is: 1700")
+
+                3 -> budgetTxtView.setText("Your Budget is: 1800")
+
+                4 -> budgetTxtView.setText("Your Budget is: 1900")
+
+                5 -> budgetTxtView.setText("Your Budget is: 2000")
+
+                6 -> budgetTxtView.setText("Your Budget is: 2100")
+
+                7 -> budgetTxtView.setText("Your Budget is: 2200")
+
+                8 -> budgetTxtView.setText("Your Budget is: 2300")
+
+                9 -> budgetTxtView.setText("Your Budget is: 2400")
+
+                10 -> budgetTxtView.setText("Your Budget is: 2500")
+
+                11-> budgetTxtView.setText("Your Budget is: 2600")
+
+                12-> budgetTxtView.setText("Your Budget is: 2700")
+
+                13-> budgetTxtView.setText("Your Budget is: 2800")
+
+                14-> budgetTxtView.setText("Your Budget is: 2900")
+
+                15-> budgetTxtView.setText("Your Budget is: 3000")
+
+                else ->budgetTxtView.setText("Your Budget is: 2000")
+
+            }
+        }
+
+
     }
 }

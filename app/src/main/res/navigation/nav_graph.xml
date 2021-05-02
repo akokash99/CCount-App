@@ -88,6 +88,9 @@
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_diaryFragment_to_webviewFragment"
+            app:destination="@id/webviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/factsFragment"
@@ -101,4 +104,9 @@
             app:exitAnim="@anim/slide_out_right"
             />
     </fragment>
+    <fragment
+        android:id="@+id/webviewFragment"
+        android:name="com.akokash.ccount.ui.webview.WebviewFragment"
+        android:label="fragment_webview"
+        tools:layout="@layout/fragment_webview" />
 </navigation>

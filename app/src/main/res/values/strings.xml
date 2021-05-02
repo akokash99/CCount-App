@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Ccount</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome_txt">Welcome to Ccount. The app that will allow you to regain control over your eating habits!</string>
     <string name="diary_btn">My day in calories</string>
     <string name="settings">Settings</string>
@@ -23,29 +22,70 @@
     <string name="confirm">Yes</string>
     <string name="no">No</string>
     <string name="ok">ok</string>
-    <string name ="welcome">welcome to ccount</string>
-    <string name="message_body"> Enjoy calorie counting!</string>
+    <string name="welcome">Welcome to Ccount</string>
+    <string name="message_body"> In Cc, you can use the diary to log everything you ate. You can go to settings to set your daily budget. You can also learn interesting facts about weight loss through our app! Enjoy calorie counting!</string>
 
-    <string-array name="effects" >
-        <item>Crop Square</item>
-        <item>Crop Circle</item>
-        <item>Blur</item>
-        <item>Pixelation</item>
-        <item>Invert</item>
-        <item>Rounded Corners</item>
+    <string-array name="budget">
+        <item>1500</item>
+        <item>1600</item>
+        <item>1700</item>
+        <item>1800</item>
+        <item>1900</item>
+        <item>2000</item>
+        <item>2100</item>
+        <item>2200</item>
+        <item>2300</item>
+        <item>2400</item>
+        <item>2500</item>
+        <item>2600</item>
+        <item>2700</item>
+        <item>2800</item>
+        <item>2900</item>
+        <item>3000</item>
+
+
     </string-array>
 
-    <string-array name="effect_values" >
+    <string-array name="budget_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
     </string-array>
 
-    <string name="show_message">Show Message at Start</string>
-    <string name="show_now_picture">Show Now Picture</string>
-    <string name="effect">Effect</string>
+    <string name="show_instructions">Show Instructions at Start</string>
+    <string name="show_digital_scale">Show Digital Scale</string>
+    <string name="budget">Budget</string>
+
+
+    <string name="fact1">During the 19th century, a diet called “Fletcherism” became popular. Introduced by American Horace Fletcher (“the Great Masticator”), the diet promoted chewing a mouthful of food at least 32 times or until it was turned into liquid. He argued his method of eating could help people avoid disease and lose weight.</string>
+    <string name="fact2">Elvis Presley was famously a fan of the “Sleeping Beauty Diet,” or a diet where a person is sedated for days at time. The reasoning behind the diet was that a sleeping person wouldn’t eat.</string>
+    <string name="fact3">Losing weight alters brain activity. For example, after following a weight loss program for 6 months, women scored better on memory tests. Research has also linked obesity to poor memory, especially in overweight pear-shaped women.</string>
+    <string name="fact4">A fat cell lives for about 7 years. When a fat cell dies, a new one grows to replace it. The body keeps track of how many fat cells it has as well as the amount of fat in each cell. If fat cells are removed by liposuction, for example, the body compensates by growing new fat cells in other areas of the body</string>
+    <string name="fact5">Obesity has been linked to several types of cancer. Specifically, being overweight causes inflammation that causes cell changes in the body. However, just by losing 5% of your body weight can significantly lower dangerous levels of inflammation.</string>
+    <string name="fact6">According to a University of Minnesota study, people in disorganized workspaces are more likely to choose unhealthy snacks.</string>
+    <string name="fact7">After undergoing bariatric surgery, approximately 87% of patients said their taste buds had changed. Almost half of them said food didn’t taste as good, so they didn’t eat as much. Additionally, people had less of a preference for salty foods.</string>
+    <string name="fact8">A recent study found that eating dark chocolate in moderate amounts is associated with lower levels of abdominal fat. Scientists speculate that the antioxidants may help fight inflammation and improve metabolic functioning.</string>
+    <string name="fact9">Scientists believe there are as many as 100 different types of “fat genes,” or genes that increase the likelihood of someone developing type 2 diabetes and becoming obese. However, scientists note that obesity-promoting genes can be offset by regular exercise and a healthy diet.</string>
+    <string name="generate_fact">New Fact</string>
+    <string name="cool_facts_diet">Cool facts about weight loss</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="go">go</string>
+    <string name="google">google</string>
+
 
 </resources>

@@ -3,22 +3,22 @@
 
     <CheckBoxPreference
         android:defaultValue="true"
-        android:key="show_message_at_start"
-        android:title="@string/show_message"/>
+        android:key="show_instructions_at_start"
+        android:title="@string/show_instructions"/>
 
     <SwitchPreferenceCompat
-        android:id="@+id/show_now_image_switch"
+        android:id="@+id/scale_image_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:key="show_now_image"
-        android:title="@string/show_now_picture"/>
+        android:key="scale_image"
+        android:title="@string/show_digital_scale"/>
 
     <ListPreference
         android:summary="%s"
         android:defaultValue="0"
-        android:entries="@array/effects"
-        android:entryValues="@array/effect_values"
-        android:key="effect_selection"
-        android:title="@string/effect"/>
+        android:entries="@array/budget"
+        android:entryValues="@array/budget_values"
+        android:key="budget_selection"
+        android:title="@string/budget"/>
 
 </PreferenceScreen>
