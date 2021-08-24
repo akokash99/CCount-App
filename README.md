@@ -1,5 +1,10 @@
 # Ccount-App
 
+
+## Description:
+In Ccount, you can track your calories and some nutrients(proten, fats, carbohydrates). You set a daily budget(from settings) and then you go to the food diary. From there, you can log what you eat and their calories. You can also get facts about weight loss and health-related topics in the facts screen. The data is persisted using room and the settings are persisted using SharedPreferences.
+
+
 ## App Features:
 ● Localized to German.
 
@@ -12,12 +17,8 @@
 ● Persists settings using SharedPreferences
 
 
-## Description:
-In Ccount, you can track your calories and some nutrients(proten, fats, carbohydrates). You set a daily budget(from settings) and then you go to the food diary. From there, you can log what you eat and their calories. You can also get facts about weight loss and health-related topics in the facts screen. The data is persisted using room and the settings are persisted using SharedPreferences.
 
 ## How to use the app:
-
-The app is very simple to use.
 
 ● Press “my day in calories” to see calories logged. From there you can add what you ate. You can also remove any entry you want. To remove entries all you have to do is press on the entry, and then press the remove button. This should remove the entry from the UI and the database.
 
